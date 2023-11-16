@@ -31,3 +31,7 @@ D:\Kuliah\Semester 7\Praktikum RPLBK\Modul 9\Tugas9\Tugas9\obj\Debug\net7.0\refi
 D:\Kuliah\Semester 7\Praktikum RPLBK\Modul 9\Tugas9\Tugas9\obj\Debug\net7.0\Tugas9.pdb
 D:\Kuliah\Semester 7\Praktikum RPLBK\Modul 9\Tugas9\Tugas9\obj\Debug\net7.0\Tugas9.genruntimeconfig.cache
 D:\Kuliah\Semester 7\Praktikum RPLBK\Modul 9\Tugas9\Tugas9\obj\Debug\net7.0\ref\Tugas9.dll
+D:\Kuliah\Semester 7\Praktikum RPLBK\Modul 9\Tugas9\Tugas9\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Kuliah\Semester 7\Praktikum RPLBK\Modul 9\Tugas9\Tugas9\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Kuliah\Semester 7\Praktikum RPLBK\Modul 9\Tugas9\Tugas9\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\Kuliah\Semester 7\Praktikum RPLBK\Modul 9\Tugas9\Tugas9\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll

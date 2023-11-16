@@ -42,41 +42,39 @@ public class UserAPIController : ControllerBase
         }
         userDTO.Id = UserStore.userList.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
         UserStore.userList.Add(userDTO);
-        string response = "Sukses menambahkan data user" + "\nId : " + userDTO.Id.ToString() + "\nNama : " + userDTO.Name + "\nPassword" + userDTO.Password;
-
-        return CreatedAtRoute("GetVilla", new { id = userDTO.Id }, response);
-
+        string response = "Sukses menambahkan data user" + "\nId : " + userDTO.Id.ToString() + "\nNama : " + userDTO.Name + "\nPassword : " + userDTO.Password;
+        return CreatedAtRoute("GetUser", new { id = userDTO.Id }, response);
     }
-    [HttpDelete("(id:int)", Name = "DeleteUser")]
+    [HttpDelete("{id:int}", Name = "DeleteUser")]
     public IActionResult DeleteUser(int id)
     {
-        if (id == 0) 
+        if (id == 0)
         {
             return BadRequest();
         }
         var user = UserStore.userList.FirstOrDefault(u => u.Id == id);
-        if (user == null) 
+        if (user == null)
         {
             return NotFound();
         }
         UserStore.userList.Remove(user);
         return NoContent();
     }
-    [HttpPut("(id:int", Name = "Update User")]
-    public IActionResult UpdateUser(int id, [FromBody]UserDTO userDTO)
+    [HttpPut("{id:int}", Name = "Update User")]
+    public IActionResult UpdateUser(int id, [FromBody] UserDTO userDTO)
     {
-        if (userDTO == null || id != userDTO.Id) 
+        if (userDTO == null || id != userDTO.Id)
         {
             return BadRequest();
         }
-        var user = UserStore.userList.FirstOrDefault( u => u.Id == id);
+        var user = UserStore.userList.FirstOrDefault(u => u.Id == id);
         user.Name = userDTO.Name;
         user.Password = userDTO.Password;
 
         return NoContent();
     }
     [HttpPatch("{id:int}", Name = "UpdatePartialUser")]
-    public IActionResult UpdatePartialUser (int id, JsonPatchDocument<UserDTO> patchDTO)
+    public IActionResult UpdatePartialUser(int id, JsonPatchDocument<UserDTO> patchDTO)
     {
         if (patchDTO == null || id == 0)
         {
@@ -94,6 +92,22 @@ public class UserAPIController : ControllerBase
         }
         return NoContent();
     }
+    [HttpPost("/login")]
+    public ActionResult<UserDTO> LoginAcc([FromBody] UserDTO userDTO)
+    {
+        if (userDTO == null)
+        {
+            return BadRequest("Username/Password Invalid");
+        }
+
+        var user = UserStore.userList.FirstOrDefault(u => u.Name == userDTO.Name);
+        if (user == null && user.Password != userDTO.Password)
+        {
+            return NotFound("Username/Password Salah");
+        }
+        return Ok("Berhasil Login");
+    }
+
 }
     
 
